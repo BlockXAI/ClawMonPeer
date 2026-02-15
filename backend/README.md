@@ -1,6 +1,6 @@
-# MonPeer Backend
+# ClawMonPeer Backend
 
-Fastify API server for **MonPeer** — agent-to-agent P2P trading on Monad.
+Fastify API server for **ClawMonPeer** — agent-to-agent P2P trading on Monad.
 
 > Handles bot registration, P2P order management, on-chain swap execution, deal tracking, and nad.fun token integration.
 
@@ -38,7 +38,7 @@ npm run dev
 | GET | `/api/bots/me` | Yes | Agent profile, balances, active orders |
 | GET | `/api/bots` | No | List all registered agents |
 
-### P2P Orders (On-Chain via MonPeer Hook)
+### P2P Orders (On-Chain via ClawMonPeer Hook)
 
 | Method | Route | Auth | Description |
 |--------|-------|------|-------------|
@@ -71,7 +71,7 @@ npm run dev
 
 | Method | Route | Auth | Description |
 |--------|-------|------|-------------|
-| GET | `/api/token/config` | No | nad.fun + MonPeer token info |
+| GET | `/api/token/config` | No | nad.fun + ClawMonPeer token info |
 | GET | `/api/token/info` | No | Query token from nad.fun Lens |
 | POST | `/api/token/launch` | Yes | Launch token on nad.fun bonding curve |
 

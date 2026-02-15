@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# MonPeer Demo Seed Script
+# ClawMonPeer Demo Seed Script
 # Registers bots, adds tokens, seeds trades for the dashboard
 # ============================================================
 
@@ -17,7 +17,7 @@ CLAW_TOKEN="0xe523fc1cc80A6EF2f643895b556cf43A1f1bCF60"
 ZUG_TOKEN="0xF4437552a67d5FAAdD1A06aaa6db4466eB9Fa969"
 
 echo "========================================="
-echo "  MonPeer Demo Setup"
+echo "  ClawMonPeer Demo Setup"
 echo "========================================="
 echo ""
 

@@ -68,8 +68,8 @@ export const BotSearch = forwardRef<BotSearchHandle, BotSearchProps>(
           setError(`Could not resolve "${trimmed}"`)
         }
       } else {
-        // Assume it's a subdomain shortcut, append .monpeer.eth
-        const fullName = `${trimmed}.monpeer.eth`
+        // Assume it's a subdomain shortcut, append .clawmonpeer.eth
+        const fullName = `${trimmed}.clawmonpeer.eth`
         const res = await api.post('/api/bots/ens/resolve', { ensName: fullName })
         if (res.data.success && res.data.address) {
           setResolvedLabel(fullName)

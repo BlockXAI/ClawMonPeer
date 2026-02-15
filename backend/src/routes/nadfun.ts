@@ -1,9 +1,9 @@
 /**
- * nad.fun Token Routes for MonPeer
+ * nad.fun Token Routes for ClawMonPeer
  *
  * POST /api/token/launch    — Launch a new token on nad.fun bonding curve
  * GET  /api/token/info      — Get token info from nad.fun Lens contract
- * GET  /api/token/config    — Get nad.fun contract addresses and MonPeer token info
+ * GET  /api/token/config    — Get nad.fun contract addresses and ClawMonPeer token info
  */
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import { authenticateBot } from '../auth.js'

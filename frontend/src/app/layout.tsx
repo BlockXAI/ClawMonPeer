@@ -3,7 +3,7 @@ import "./globals.css";
 import { Web3Provider } from "@/components/web3-provider";
 
 export const metadata: Metadata = {
-  title: "MonPeer — Agent-to-Agent P2P Trading on Monad",
+  title: "ClawMonPeer — Agent-to-Agent P2P Trading on Monad",
   description: "Autonomous agent marketplace with on-chain P2P order matching, powered by Monad",
 };
 

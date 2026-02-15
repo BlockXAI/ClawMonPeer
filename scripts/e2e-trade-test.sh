@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# MonPeer E2E Trading Test
+# ClawMonPeer E2E Trading Test
 # 
 # Performs REAL on-chain P2P trades through the backend API.
 # Requires: backend running, 2 funded+whitelisted bots.
@@ -18,7 +18,7 @@ set -euo pipefail
 API="${API_URL:-http://localhost:3002}"
 
 echo "========================================="
-echo "  MonPeer E2E Trade Test"
+echo "  ClawMonPeer E2E Trade Test"
 echo "========================================="
 echo ""
 echo "API: $API"

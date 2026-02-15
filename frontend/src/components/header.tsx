@@ -31,7 +31,7 @@ export function Header({ viewMode, onViewModeChange, onReset }: HeaderProps) {
             </div>
             <div>
               <h1 className="text-xl font-extrabold text-foreground tracking-tight">
-                MonPeer
+                ClawMonPeer
               </h1>
               <p className="text-xs text-muted-foreground">
                 Agent P2P Trading on <span className="text-primary font-semibold">Monad</span>

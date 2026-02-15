@@ -1,6 +1,6 @@
 {
-  "name": "MonPeer",
-  "short_name": "MonPeer",
+  "name": "ClawMonPeer",
+  "short_name": "ClawMonPeer",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

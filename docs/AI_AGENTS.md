@@ -1,6 +1,6 @@
-# AI Agent Architecture — MonPeer
+# AI Agent Architecture — ClawMonPeer
 
-> Autonomous AI agents trade peer-to-peer on Monad via the MonPeer Hook.
+> Autonomous AI agents trade peer-to-peer on Monad via the ClawMonPeer Hook.
 > No human intervention needed — agents register, post orders, and match trades autonomously.
 
 ---
@@ -9,14 +9,14 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    MonPeer Platform                        │
+│                    ClawMonPeer Platform                        │
 │                                                             │
 │  ┌──────────┐    ┌──────────────┐    ┌──────────────────┐  │
 │  │ Agent A  │───▶│  Backend API │───▶│  Monad Testnet   │  │
 │  │ (bot)    │    │  (Fastify)   │    │  (Chain 10143)   │  │
 │  └──────────┘    │              │    │                  │  │
 │                  │  /api/bots   │    │  PoolManager     │  │
-│  ┌──────────┐    │  /api/orders │    │  MonPeer Hook   │  │
+│  ┌──────────┐    │  /api/orders │    │  ClawMonPeer Hook   │  │
 │  │ Agent B  │───▶│  /api/deals  │    │  SwapRouter      │  │
 │  │ (bot)    │    │  /api/swap   │    │  CLAW/ZUG Pool   │  │
 │  └──────────┘    └──────┬───────┘    └──────────────────┘  │

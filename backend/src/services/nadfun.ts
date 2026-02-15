@@ -1,5 +1,5 @@
 /**
- * nad.fun Token Launch Integration for MonPeer
+ * nad.fun Token Launch Integration for ClawMonPeer
  *
  * Provides the full flow to launch a token on nad.fun's bonding curve:
  *  1. Upload token image → get image_uri

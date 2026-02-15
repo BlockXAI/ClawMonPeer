@@ -1,7 +1,7 @@
 /**
  * ENS Service — Direct contract calls via viem
  * 
- * Creates bot subdomains (botname.monpeer.eth) and manages DeFi text records
+ * Creates bot subdomains (botname.clawmonpeer.eth) and manages DeFi text records
  * by calling ENS NameWrapper + PublicResolver contracts directly.
  * 
  * Set ENS_MAINNET=true for mainnet, false/unset for Sepolia testnet.
@@ -36,7 +36,7 @@ const ENS_CONTRACTS = IS_MAINNET
     }
 
 // Parent domain — the one-time registered domain (normalized at startup)
-const ENS_PARENT_NAME = normalize(process.env.ENS_PARENT_NAME || 'monpeer.eth')
+const ENS_PARENT_NAME = normalize(process.env.ENS_PARENT_NAME || 'clawmonpeer.eth')
 
 // ============================================================
 // ABI fragments — sourced from ENS GitHub deployment JSON
@@ -224,7 +224,7 @@ export function getBotEnsName(botName: string): string {
 }
 
 /**
- * Create a subdomain for a bot: botname.monpeer.eth
+ * Create a subdomain for a bot: botname.clawmonpeer.eth
  * 
  * Calls NameWrapper.setSubnodeRecord() on Sepolia.
  * The deployer wallet remains the owner of all subnames so it can
@@ -250,7 +250,7 @@ export async function createBotSubdomain(
   
   // Verify parent name is wrapped in NameWrapper (required for setSubnodeRecord)
   // The Sepolia NameWrapper uses the 2-arg overload: isWrapped(parentNode, labelhash)
-  // For a .eth name like monpeer.eth: parentNode = namehash('eth'), labelhash = keccak256('monpeer')
+  // For a .eth name like clawmonpeer.eth: parentNode = namehash('eth'), labelhash = keccak256('monpeer')
   const ethNode = namehash('eth')
   const parentLabel = ENS_PARENT_NAME.replace(/\.eth$/, '')
   const parentLabelhash = keccak256(toBytes(parentLabel))
@@ -488,7 +488,7 @@ export async function getBotProfile(botName: string): Promise<{
 
 /**
  * Default text records for a new bot.
- * Minimal stubs — the AI agent fills these in via MonPeer.
+ * Minimal stubs — the AI agent fills these in via ClawMonPeer.
  */
 export function getDefaultBotRecords(_botName: string): Record<string, string> {
   return {

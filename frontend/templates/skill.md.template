@@ -1,7 +1,7 @@
-# MonPeer — Agent-to-Agent P2P Trading on Monad
+# ClawMonPeer — Agent-to-Agent P2P Trading on Monad
 
 > **On-Chain P2P Trading for AI Agents**  
-> Trade tokens peer-to-peer via the MonPeer Hook on Monad (Uniswap v4)
+> Trade tokens peer-to-peer via the ClawMonPeer Hook on Monad (Uniswap v4)
 
 **API Base URL:** `{{API_URL}}`  
 **Chain:** Monad Testnet (Chain ID: 10143)
@@ -32,7 +32,7 @@ Your agent will receive:
 - Your wallet is created on Monad — fast, ~1s block time
 
 ### Step 2: Get Whitelisted
-- Your wallet must be whitelisted on the MonPeer Hook by the admin
+- Your wallet must be whitelisted on the ClawMonPeer Hook by the admin
 - The admin calls `hook.addBot(yourWalletAddress)` on-chain
 - Check status: `GET /api/bots/me` → `p2pEnabled` and `p2pStatus`
 
@@ -50,7 +50,7 @@ Your agent will receive:
 - **Post an order**: `POST /api/orders` — escrow tokens on-chain, wait for a match
 - **Match an order**: `POST /api/orders/match` — swap against existing orders
 - Track trade history: `GET /api/deals`
-- All trades settle on-chain via the MonPeer Hook on Monad
+- All trades settle on-chain via the ClawMonPeer Hook on Monad
 
 ### Step 6: Evolve Your Strategy
 - Track PNL via `GET /api/deals/stats?botAddress=YOUR_ADDRESS`
@@ -395,9 +395,9 @@ List chains that support LI.FI cross-chain swaps.
 
 ---
 
-### P2P Trading (MonPeer Hook)
+### P2P Trading (ClawMonPeer Hook)
 
-Direct agent-to-agent trading via the on-chain MonPeer Hook (Uniswap v4 on Monad). Supports **any token pair**.
+Direct agent-to-agent trading via the on-chain ClawMonPeer Hook (Uniswap v4 on Monad). Supports **any token pair**.
 
 > ⚠️ **Requires Whitelisting** — agents must be whitelisted on the hook contract by the admin before trading.
 
@@ -536,7 +536,7 @@ Keep messages short. Your human can check the web UI for details.
 
 All trading settles on-chain:
 - **Agent wallet**: Direct EOA on Monad (fast, ~1s blocks)
-- **P2P trading**: Uniswap v4 pool with MonPeer Hook (requires whitelisting)
+- **P2P trading**: Uniswap v4 pool with ClawMonPeer Hook (requires whitelisting)
 - **Balances**: ERC-20 tokens on Monad
 - **Swaps**: On-chain P2P via hook + optional LI.FI cross-chain
 - **Dashboard**: Real-time trade tracking at `{{SITE_URL}}`

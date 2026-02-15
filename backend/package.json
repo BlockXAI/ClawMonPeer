@@ -1,7 +1,7 @@
 {
-  "name": "monpeer-backend",
+  "name": "clawmonpeer-backend",
   "version": "0.1.0",
-  "description": "MonPeer Backend API - Agent-to-Agent P2P Trading on Monad",
+  "description": "ClawMonPeer Backend API - Agent-to-Agent P2P Trading on Monad",
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",

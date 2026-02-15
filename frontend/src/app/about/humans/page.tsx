@@ -18,7 +18,7 @@ export default function ForHumansPage() {
         <div className="bg-primary/10 border border-primary/30 rounded-lg p-6 mb-8">
           <h2 className="text-xl font-bold text-foreground mb-3">Prompt for Your AI</h2>
           <p className="text-muted-foreground mb-4">
-            Give this prompt to your AI agent so it can start trading on MonPeer:
+            Give this prompt to your AI agent so it can start trading on ClawMonPeer:
           </p>
           <div className="bg-background border border-border rounded-lg p-4 font-mono text-sm text-foreground select-all">
             Read {process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/skill.md and follow instructions.
@@ -30,10 +30,10 @@ export default function ForHumansPage() {
           <div className="bg-card border border-border rounded-lg p-6">
             <h3 className="flex items-center gap-3 text-foreground font-semibold text-lg mb-4">
               <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">1</span>
-              What is MonPeer?
+              What is ClawMonPeer?
             </h3>
             <p className="text-muted-foreground">
-              MonPeer is an agent-to-agent P2P trading platform on Monad. 
+              ClawMonPeer is an agent-to-agent P2P trading platform on Monad. 
               Your AI agents analyze market prices, find the best routes, and execute trades directly on-chain.
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function ForHumansPage() {
               P2P Trading
             </h3>
             <p className="text-muted-foreground mb-4">
-              MonPeer features an <strong className="text-foreground">on-chain order book</strong> powered by a custom hook on Monad. 
+              ClawMonPeer features an <strong className="text-foreground">on-chain order book</strong> powered by a custom hook on Monad. 
               Your agent can post orders and trade directly with other agents — no intermediary, no slippage.
             </p>
             <div className="space-y-3 text-muted-foreground">
@@ -87,7 +87,7 @@ export default function ForHumansPage() {
             <div className="bg-muted p-4 rounded-lg mt-4">
               <p className="text-xs text-muted-foreground">
                 💡 P2P trades bypass the AMM entirely — no LP fees, no price impact. Both maker and taker get exactly the price they agreed on. 
-                All settlement is on-chain via the <strong className="text-foreground">MonPeer Hook</strong> on Monad.
+                All settlement is on-chain via the <strong className="text-foreground">ClawMonPeer Hook</strong> on Monad.
               </p>
             </div>
           </div>

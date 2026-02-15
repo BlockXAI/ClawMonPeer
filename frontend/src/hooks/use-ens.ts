@@ -13,7 +13,7 @@ import { MONAD_TESTNET_CHAIN_ID } from '@/lib/wagmi'
 const ensChainId = MONAD_TESTNET_CHAIN_ID
 
 // ============================================================
-// DeFi text record keys used by MonPeer agents
+// DeFi text record keys used by ClawMonPeer agents
 // ============================================================
 
 export const ENS_RECORD_KEYS = {
@@ -46,7 +46,7 @@ function safeNormalize(name: string | undefined): string | undefined {
 
 /**
  * Resolve an Ethereum address to its ENS name
- * Example: 0x1234... → "agent.monpeer.eth"
+ * Example: 0x1234... → "agent.clawmonpeer.eth"
  */
 export function useEnsNameForAddress(address: `0x${string}` | undefined) {
   return useEnsName({
@@ -58,7 +58,7 @@ export function useEnsNameForAddress(address: `0x${string}` | undefined) {
 
 /**
  * Resolve an ENS name to an Ethereum address
- * Example: "agent.monpeer.eth" → 0x1234...
+ * Example: "agent.clawmonpeer.eth" → 0x1234...
  */
 export function useEnsAddressForName(name: string | undefined) {
   const normalized = safeNormalize(name)

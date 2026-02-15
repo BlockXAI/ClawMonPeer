@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Web3 Providers for MonPeer
+ * Web3 Providers for ClawMonPeer
  * 
  * Wraps the app with WagmiProvider + QueryClientProvider
  * to enable wagmi hooks throughout the frontend.

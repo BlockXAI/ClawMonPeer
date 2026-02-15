@@ -29,7 +29,7 @@ import { createBlockchainClient, createSponsoredClient } from './wallet.js'
  * Initialize LI.FI SDK (call once at startup)
  */
 export function initLiFi(): void {
-  const integrator = process.env.LIFI_INTEGRATOR || 'MonPeer'
+  const integrator = process.env.LIFI_INTEGRATOR || 'ClawMonPeer'
   const apiKey = process.env.LIFI_API_KEY || undefined
 
   createConfig({

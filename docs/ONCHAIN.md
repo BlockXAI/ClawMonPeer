@@ -1,6 +1,6 @@
 # On-Chain Architecture — Monad Testnet
 
-> All MonPeer smart contracts are deployed on **Monad Testnet (Chain ID: 10143)**.
+> All ClawMonPeer smart contracts are deployed on **Monad Testnet (Chain ID: 10143)**.
 > Explorer: [testnet.monadexplorer.com](https://testnet.monadexplorer.com)
 
 ---
@@ -12,7 +12,7 @@
 | 1 | **PoolManager** | `0x4F992a229e3eBd64AC36137fa8750c8beA64929E` | [View](https://testnet.monadexplorer.com/address/0x4F992a229e3eBd64AC36137fa8750c8beA64929E) | Uniswap v4 core — manages all pools and liquidity |
 | 2 | **SwapRouter** | `0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd` | [View](https://testnet.monadexplorer.com/address/0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd) | Executes swaps through PoolManager |
 | 3 | **LiquidityRouter** | `0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d` | [View](https://testnet.monadexplorer.com/address/0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d) | Adds/removes liquidity positions |
-| 4 | **MonPeer Hook** | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` | [View](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) | P2P order matching hook (core innovation) |
+| 4 | **ClawMonPeer Hook** | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` | [View](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) | P2P order matching hook (core innovation) |
 | 5 | **CLAW Token** | `0xe523fc1cc80A6EF2f643895b556cf43A1f1bCF60` | [View](https://testnet.monadexplorer.com/address/0xe523fc1cc80A6EF2f643895b556cf43A1f1bCF60) | ERC-20 demo token (18 decimals) |
 | 6 | **ZUG Token** | `0xF4437552a67d5FAAdD1A06aaa6db4466eB9Fa969` | [View](https://testnet.monadexplorer.com/address/0xF4437552a67d5FAAdD1A06aaa6db4466eB9Fa969) | ERC-20 demo token (18 decimals) |
 | 7 | **Create2Deployer** | `0xf09b40dfc07a584970312d1f62ed84a4edd575c9` | [View](https://testnet.monadexplorer.com/address/0xf09b40dfc07a584970312d1f62ed84a4edd575c9) | Deterministic deployment of hook at correct address |
@@ -42,7 +42,7 @@ All transactions were broadcast via `forge script` with `--legacy` flag (Monad d
 | 4 | [`0x4e15da1f...`](https://testnet.monadexplorer.com/tx/0x4e15da1f83e387f8a91d8d9b60495d4c8a3a8da94990a80090706981bed83b93) | Deploy **CLAW Token** (MockToken) | 12,277,244 |
 | 5 | [`0x89387d76...`](https://testnet.monadexplorer.com/tx/0x89387d76466403fb4280d137471e68f3265ee0630f499a52eb871992d728869d) | Deploy **ZUG Token** (MockToken) | 12,277,244 |
 | 6 | [`0xf3506531...`](https://testnet.monadexplorer.com/tx/0xf3506531dd8169fffe61fb26e23f24cdbf842df0505d258cb9d847cd579abfaa) | Deploy **Create2Deployer** | — |
-| 7 | [`0x9535fc86...`](https://testnet.monadexplorer.com/tx/0x9535fc86991a3dd05462ed34657a893b08ce7fde110189830a4a411f2b96f3d4) | CREATE2 deploy **MonPeer Hook** | — |
+| 7 | [`0x9535fc86...`](https://testnet.monadexplorer.com/tx/0x9535fc86991a3dd05462ed34657a893b08ce7fde110189830a4a411f2b96f3d4) | CREATE2 deploy **ClawMonPeer Hook** | — |
 
 ### Step 2: Token Minting
 
@@ -83,9 +83,9 @@ All transactions were broadcast via `forge script` with `--legacy` flag (Monad d
 
 ---
 
-## Hook Architecture (MonPeerHook.sol)
+## Hook Architecture (ClawMonPeerHook.sol)
 
-The MonPeer Hook is a **Uniswap v4 hook** that enables inline P2P order matching inside the `beforeSwap` callback.
+The ClawMonPeer Hook is a **Uniswap v4 hook** that enables inline P2P order matching inside the `beforeSwap` callback.
 
 ### Hook Flags
 
@@ -129,7 +129,7 @@ PoolKey({
     currency1: 0xF4437552a67d5FAAdD1A06aaa6db4466eB9Fa969,  // ZUG
     fee:       3000,       // 0.3%
     tickSpacing: 60,
-    hooks:     0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188   // MonPeer Hook
+    hooks:     0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188   // ClawMonPeer Hook
 })
 ```
 

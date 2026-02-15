@@ -1,7 +1,7 @@
 /**
- * P2P Trading Service — MonPeer Hook Integration
+ * P2P Trading Service — ClawMonPeer Hook Integration
  *
- * On-chain P2P order matching via the MonPeer Hook on Monad.
+ * On-chain P2P order matching via the ClawMonPeer Hook on Monad.
  * Uses direct wallet signing for fast Monad-native transactions.
  *
  * Supports multiple token pairs — any two tokens can form a pool.
@@ -38,7 +38,7 @@ export const NADFUN_CONTRACTS = {
   WMON: (process.env.NADFUN_WMON || '0x0000000000000000000000000000000000000000') as Hex,
 }
 
-// MonPeer token address (deployed on nad.fun — set after launch)
+// ClawMonPeer token address (deployed on nad.fun — set after launch)
 export const MONPEER_TOKEN_ADDRESS = (process.env.MONPEER_TOKEN_ADDRESS || '0x0000000000000000000000000000000000000000') as Hex
 // Minimum token balance required to post P2P orders (token gate)
 export const MIN_TOKEN_BALANCE = BigInt(process.env.MIN_TOKEN_BALANCE || '0')
@@ -69,7 +69,7 @@ const KNOWN_TOKENS: Record<string, TokenInfo> = {
   MONPEER: {
     address: MONPEER_TOKEN_ADDRESS,
     symbol: 'CLAW',
-    name: 'MonPeer Token',
+    name: 'ClawMonPeer Token',
     decimals: 18,
   },
 }
@@ -328,7 +328,7 @@ export async function postP2POrder(params: PostOrderParams): Promise<PostOrderRe
   // Ensure bot is whitelisted on the hook
   await ensureWhitelisted(params.botAddress)
 
-  // Token gate: check MonPeer token balance if configured
+  // Token gate: check ClawMonPeer token balance if configured
   if (MIN_TOKEN_BALANCE > 0n && MONPEER_TOKEN_ADDRESS !== '0x0000000000000000000000000000000000000000') {
     const gateClient = createBlockchainClient(P2P_CHAIN_ID)
     const tokenBal = await gateClient.readContract({
@@ -338,7 +338,7 @@ export async function postP2POrder(params: PostOrderParams): Promise<PostOrderRe
       args: [params.botAddress as Hex],
     })
     if (tokenBal < MIN_TOKEN_BALANCE) {
-      throw new Error(`Insufficient MonPeer token balance. Required: ${MIN_TOKEN_BALANCE.toString()}, have: ${tokenBal.toString()}`)
+      throw new Error(`Insufficient ClawMonPeer token balance. Required: ${MIN_TOKEN_BALANCE.toString()}, have: ${tokenBal.toString()}`)
     }
   }
 

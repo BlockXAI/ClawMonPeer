@@ -1,4 +1,4 @@
-# MonPeer Hook — P2P Order Matching on Uniswap v4 (Monad)
+# ClawMonPeer Hook — P2P Order Matching on Uniswap v4 (Monad)
 
 A Uniswap v4 hook enabling **agent-to-agent P2P order matching** on Monad, bypassing AMM pool liquidity when matching orders are available.
 
@@ -6,7 +6,7 @@ A Uniswap v4 hook enabling **agent-to-agent P2P order matching** on Monad, bypas
 
 ## Overview
 
-The MonPeer Hook acts as an on-chain order book integrated directly into a Uniswap v4 pool on Monad. Whitelisted AI agents can post orders, and when another agent swaps through the pool, the hook checks for matching orders and executes P2P trades directly between maker and taker — zero slippage, no AMM interaction.
+The ClawMonPeer Hook acts as an on-chain order book integrated directly into a Uniswap v4 pool on Monad. Whitelisted AI agents can post orders, and when another agent swaps through the pool, the hook checks for matching orders and executes P2P trades directly between maker and taker — zero slippage, no AMM interaction.
 
 ### Key Features
 
@@ -21,7 +21,7 @@ The MonPeer Hook acts as an on-chain order book integrated directly into a Unisw
 
 | Contract | Address | Explorer |
 |----------|---------|----------|
-| **MonPeer Hook** | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` | [View](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) |
+| **ClawMonPeer Hook** | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` | [View](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) |
 | **PoolManager** | `0x4F992a229e3eBd64AC36137fa8750c8beA64929E` | [View](https://testnet.monadexplorer.com/address/0x4F992a229e3eBd64AC36137fa8750c8beA64929E) |
 | **SwapRouter** | `0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd` | [View](https://testnet.monadexplorer.com/address/0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd) |
 | **LiquidityRouter** | `0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d` | [View](https://testnet.monadexplorer.com/address/0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d) |
@@ -44,7 +44,7 @@ The MonPeer Hook acts as an on-chain order book integrated directly into a Unisw
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    MonPeer Hook Flow                         │
+│                    ClawMonPeer Hook Flow                         │
 └─────────────────────────────────────────────────────────────┘
 
 1. AGENT A (Maker)
@@ -109,7 +109,7 @@ forge script script/DeployMonad.s.sol --tc DeployMonad \
 2. **SwapRouter** + **LiquidityRouter** (periphery)
 3. **MockTokens** (CLAW - Claw Token, ZUG - Zug Gold)
 4. **CREATE2 Factory** (for address mining)
-5. **MonPeer Hook** (with correct flag bits `0x188`)
+5. **ClawMonPeer Hook** (with correct flag bits `0x188`)
 6. **Pool Initialization** (CLAW/ZUG pool at 1:1)
 7. **Liquidity Addition** (100K tokens for fallback swaps)
 8. **Test Swap** (verify P2P matching works)
@@ -127,7 +127,7 @@ forge test -vvv
 
 | Contract | Address | Explorer |
 |----------|---------|----------|
-| **MonPeer Hook** | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` | [View](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) |
+| **ClawMonPeer Hook** | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` | [View](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) |
 | PoolManager | `0x4F992a229e3eBd64AC36137fa8750c8beA64929E` | [View](https://testnet.monadexplorer.com/address/0x4F992a229e3eBd64AC36137fa8750c8beA64929E) |
 | SwapRouter | `0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd` | [View](https://testnet.monadexplorer.com/address/0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd) |
 | LiquidityRouter | `0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d` | [View](https://testnet.monadexplorer.com/address/0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d) |

@@ -67,7 +67,7 @@ function HomeContent() {
       {/* Get Started Section */}
       <div className="container mx-auto px-4 pt-12 pb-4">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-extrabold text-foreground mb-3 tracking-tight">Welcome to <span className="text-primary">MonPeer</span></h1>
+          <h1 className="text-4xl font-extrabold text-foreground mb-3 tracking-tight">Welcome to <span className="text-primary">ClawMonPeer</span></h1>
           <p className="text-muted-foreground text-lg">Agent-to-Agent P2P trading on <span className="text-primary font-semibold">Monad</span></p>
         </div>
 

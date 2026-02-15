@@ -1,4 +1,4 @@
-# MonPeer
+# ClawMonPeer
 
 > **Moltiverse Hackathon — Agent+Token Track** — Agent-to-Agent P2P Trading on Monad
 
@@ -7,7 +7,7 @@
 [![Monad](https://img.shields.io/badge/Monad-Testnet-836EF9)](https://monad.xyz/)
 [![nad.fun](https://img.shields.io/badge/nad.fun-Token-836EF9)](https://nad.fun/)
 
-MonPeer enables **autonomous AI agents** to trade on behalf of their human owners — with on-chain P2P order matching and token-gated access powered by **Monad** and **nad.fun**.
+ClawMonPeer enables **autonomous AI agents** to trade on behalf of their human owners — with on-chain P2P order matching and token-gated access powered by **Monad** and **nad.fun**.
 
 ## Deep Dive Documentation
 
@@ -21,7 +21,7 @@ MonPeer enables **autonomous AI agents** to trade on behalf of their human owner
 | Contract | Address |
 |----------|--------|
 | **PoolManager** | [`0x4F992a229e3eBd64AC36137fa8750c8beA64929E`](https://testnet.monadexplorer.com/address/0x4F992a229e3eBd64AC36137fa8750c8beA64929E) |
-| **MonPeer Hook** | [`0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188`](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) |
+| **ClawMonPeer Hook** | [`0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188`](https://testnet.monadexplorer.com/address/0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188) |
 | **SwapRouter** | [`0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd`](https://testnet.monadexplorer.com/address/0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd) |
 | **LiquidityRouter** | [`0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d`](https://testnet.monadexplorer.com/address/0xae160d585c48b96f248Bd6f829f4432EFf9Eb49d) |
 | **CLAW Token** | [`0xe523fc1cc80A6EF2f643895b556cf43A1f1bCF60`](https://testnet.monadexplorer.com/address/0xe523fc1cc80A6EF2f643895b556cf43A1f1bCF60) |
@@ -39,16 +39,15 @@ monpeer/
 
 ## How It Works
 
-1. **Agent registers** → gets a wallet on Monad
-2. **Token gate** → agent must hold MonPeer tokens (launched on nad.fun) to trade
+1. **Agent-First Design**: Built for AI agents, not humans. Agents register via API, get a Monad wallet, and trade autonomously through the ClawClawMonPeer Hook.
+2. **Token gate** → agent must hold ClawMonPeer tokens (launched on nad.fun) to trade
 3. **Agent posts order** → tokens escrowed on-chain with expiry
-4. **Another agent swaps** → hook matches P2P orders inline
-5. **No match?** → swap falls through to AMM pool
+4. **Uniswap v4 Hook**: The ClawClawMonPeer Hook intercepts swaps on Monad and matches P2P orders before they hit the AMM pool. **No match?** → swap falls through to AMM pool
 
 ## Key Features
 
 - **On-chain P2P order matching** — agents post/fill orders directly on Monad
-- **nad.fun token launch** — launch MonPeer token on nad.fun bonding curve
+- **nad.fun token launch** — launch ClawMonPeer token on nad.fun bonding curve
 - **Token-gated trading** — configurable minimum token balance to post P2P orders
 - **Direct wallet signing** — no AA overhead, fast Monad-native transactions
 - **Real-time dashboard** — track trades, orders, and agent activity
@@ -118,7 +117,7 @@ curl -X POST http://localhost:3002/api/token/launch \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <bot-api-key>" \
   -d '{
-    "name": "MonPeer",
+    "name": "ClawClawMonPeer",
     "symbol": "CLAW",
     "description": "Agent-to-Agent P2P Trading Token on Monad",
     "initialBuyMon": "10"
@@ -141,7 +140,7 @@ curl -X POST http://localhost:3002/api/token/launch \
 | `/api/orders/pools` | POST | Initialize a new pool |
 | `/api/deals` | GET | Trade history |
 | `/api/deals/:id` | GET | Deal details |
-| `/api/token/config` | GET | nad.fun + MonPeer token info |
+| `/api/token/config` | GET | nad.fun + ClawMonPeer token info |
 | `/api/token/info` | GET | Query token from nad.fun Lens |
 | `/api/token/launch` | POST | Launch token on nad.fun |
 | `/api/swap/quote` | POST | Get swap quote (LI.FI) |
@@ -167,7 +166,7 @@ See [`backend/.env.example`](backend/.env.example) for the full list. Key ones:
 | Variable | Description |
 |----------|-------------|
 | `MONAD_TESTNET_RPC_URL` | Monad testnet RPC endpoint |
-| `HOOK_ADDRESS` | Deployed MonPeer hook contract |
+| `HOOK_ADDRESS` | Deployed ClawMonPeer hook contract |
 | `HOOK_ADMIN_PRIVATE_KEY` | Admin key for whitelisting + token launch |
 | `NADFUN_BONDING_CURVE_ROUTER` | nad.fun router contract |
 | `MONPEER_TOKEN_ADDRESS` | Launched token address |

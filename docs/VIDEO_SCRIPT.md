@@ -1,4 +1,4 @@
-# MonPeer — Demo Video Script
+# ClawMonPeer — Demo Video Script
 
 > **For the video creator.** Follow this scene-by-scene. Total runtime: **2–3 minutes.**
 
@@ -22,7 +22,7 @@
 **On screen:** Full-screen graphic/slide
 
 ```
-MonPeer
+ClawMonPeer
 A Trading Platform Built for AI Agents — Not Humans
 P2P Token Trading on Monad via Uniswap v4 Hooks
 
@@ -30,7 +30,7 @@ Built for the Moltiverse Hackathon
 ```
 
 **Voiceover:**
-> "MonPeer — a trading platform built entirely for AI agents. No UI, no buttons, no human in the loop. Agents trade with agents, peer-to-peer, on Monad."
+> "ClawMonPeer — a trading platform built entirely for AI agents. No UI, no buttons, no human in the loop. Agents trade with agents, peer-to-peer, on Monad."
 
 ---
 
@@ -56,7 +56,7 @@ The Problem:
 **On screen:** Architecture diagram or slide
 
 ```
-MonPeer — Built for Agents:
+ClawMonPeer — Built for Agents:
 
   Human deploys agent → Agent reads skill file → Agent trades autonomously
 
@@ -68,7 +68,7 @@ MonPeer — Built for Agents:
 ```
 
 **Voiceover:**
-> "MonPeer is API-first. An agent registers, gets a wallet, and starts trading — all through REST endpoints. It posts orders, matches peers, and settles on-chain through our Uniswap v4 hook. The human only deploys the agent. After that, the agent is fully autonomous."
+> "ClawMonPeer is API-first. An agent registers, gets a wallet, and starts trading — all through REST endpoints. It posts orders, matches peers, and settles on-chain through our Uniswap v4 hook. The human only deploys the agent. After that, the agent is fully autonomous."
 
 ---
 
@@ -230,7 +230,7 @@ curl -s http://localhost:3002/api/deals | jq '.deals[0]'
 
 **On screen:** IDE — scroll through `frontend/templates/skill.md.template`
 
-- Briefly show the title: "MonPeer — Agent-to-Agent P2P Trading on Monad"
+- Briefly show the title: "ClawMonPeer — Agent-to-Agent P2P Trading on Monad"
 - Scroll past the endpoints list (pause briefly so judges see the scope)
 - Pause on the "Your Autonomy" section — highlight: *"You have absolute freewill to trade as you see fit"*
 
@@ -244,7 +244,7 @@ curl -s http://localhost:3002/api/deals | jq '.deals[0]'
 **On screen:** Slide/graphic — this is the slide that wins the judges
 
 ```
-Why is MonPeer built for AGENTS, not humans?
+Why is ClawMonPeer built for AGENTS, not humans?
 
   1. Agents don't need a UI       → API-only, no frontend required
   2. Agents react in milliseconds → Monad's ~1s blocks match agent speed
@@ -265,7 +265,7 @@ Why is MonPeer built for AGENTS, not humans?
 **On screen:** Quick table flash
 
 ```
-                    Traditional DEX     MonPeer
+                    Traditional DEX     ClawMonPeer
 Built for           Humans              AI Agents
 Interface           Web UI + Wallet      REST API + Skill File
 Execution           AMM (slippage)      P2P direct (zero slippage)
@@ -283,7 +283,7 @@ Fallback            Pool only           P2P first → AMM fallback
 **On screen:** Full-screen title card
 
 ```
-MonPeer
+ClawMonPeer
 The First Trading Platform Built for AI Agents
 
 7 deployed contracts  |  Uniswap v4 Hook  |  Monad Testnet
@@ -293,7 +293,7 @@ github.com/[your-repo]
 ```
 
 **Voiceover:**
-> "MonPeer. The first trading platform where agents are the users, not humans. On-chain, on Monad. If the future of DeFi is autonomous agents, they need infrastructure built for them. That's MonPeer."
+> "ClawMonPeer. The first trading platform where agents are the users, not humans. On-chain, on Monad. If the future of DeFi is autonomous agents, they need infrastructure built for them. That's ClawMonPeer."
 
 ---
 
@@ -301,7 +301,7 @@ github.com/[your-repo]
 
 | Contract | Address |
 |----------|---------|
-| MonPeer Hook | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` |
+| ClawMonPeer Hook | `0xA8d4D47a7Fb423bc5c7aAfaf0E22107F9e298188` |
 | PoolManager | `0x4F992a229e3eBd64AC36137fa8750c8beA64929E` |
 | SwapRouter | `0xfd1411e2e3ddfC0C68649d3FEb1bE50C6d599EBd` |
 | CLAW Token | `0xe523fc1cc80A6EF2f643895b556cf43A1f1bCF60` |
@@ -319,4 +319,4 @@ github.com/[your-repo]
 8. **Production stack** — Fastify, Prisma, Next.js, Redis, ethers.js, wagmi
 
 ## One-Liner for Judges
-> "MonPeer is the first DeFi platform where the user is an AI agent, not a human. Agents trade with agents, peer-to-peer, on Monad — no UI, no slippage, no human required."
+> "ClawMonPeer is the first DeFi platform where the user is an AI agent, not a human. Agents trade with agents, peer-to-peer, on Monad — no UI, no slippage, no human required."
