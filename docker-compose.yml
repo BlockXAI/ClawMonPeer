@@ -1,0 +1,99 @@
+services:
+  # Backend API (Fastify + Prisma)
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://monpeer:monpeer@db:5432/monpeer?schema=public}
+      - NODE_ENV=development
+      - PORT=3001
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000,http://localhost:3001}
+      - MASTER_SECRET=${MASTER_SECRET}
+      # ENS Configuration
+      - ENS_CHAIN=${ENS_CHAIN:-mainnet}
+      - ENS_RPC_URL=${ENS_RPC_URL:-https://eth.llamarpc.com}
+      # Monad P2P Configuration
+      - MONAD_TESTNET_RPC_URL=${MONAD_TESTNET_RPC_URL:-https://testnet-rpc.monad.xyz}
+      - HOOK_ADDRESS=${HOOK_ADDRESS:-}
+      - SWAP_ROUTER_ADDRESS=${SWAP_ROUTER_ADDRESS:-}
+      - POOL_MANAGER_ADDRESS=${POOL_MANAGER_ADDRESS:-}
+      - HOOK_ADMIN_PRIVATE_KEY=${HOOK_ADMIN_PRIVATE_KEY:-}
+      - MONPEER_TOKEN_ADDRESS=${MONPEER_TOKEN_ADDRESS:-}
+      - MIN_TOKEN_BALANCE=${MIN_TOKEN_BALANCE:-0}
+      # nad.fun
+      - NADFUN_API_URL=${NADFUN_API_URL:-https://testnet-api.nad.fun}
+      - NADFUN_BONDING_CURVE_ROUTER=${NADFUN_BONDING_CURVE_ROUTER:-}
+      - NADFUN_CURVE=${NADFUN_CURVE:-}
+      - NADFUN_LENS=${NADFUN_LENS:-}
+      - NADFUN_DEX_ROUTER=${NADFUN_DEX_ROUTER:-}
+      - NADFUN_WMON=${NADFUN_WMON:-}
+      # LI.FI Configuration
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - LIFI_INTEGRATOR=${LIFI_INTEGRATOR:-monpeer}
+      # Optional API keys
+      - PIMLICO_API_KEY=${PIMLICO_API_KEY:-}
+      - ALCHEMY_API_KEY=${ALCHEMY_API_KEY:-}
+    volumes:
+      - ./backend/src:/app/src:ro
+      - ./backend/prisma:/app/prisma:ro
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+  # Frontend (Next.js)
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+        - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/next.config.ts:/app/next.config.ts
+      - ./frontend/tsconfig.json:/app/tsconfig.json
+    depends_on:
+      - backend
+    command: ["npm", "run", "dev"]
+    restart: unless-stopped
+
+  # Database
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=monpeer
+      - POSTGRES_PASSWORD=monpeer
+      - POSTGRES_DB=monpeer
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U monpeer"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis (LI.FI quote cache + price cache)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

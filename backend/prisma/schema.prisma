@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model BotAuth {
+  id        String     @id @default(cuid())
+  apiKey    String     @unique
+  ensName   String?
+  createdAt DateTime   @default(now())
+  wallet    BotWallet?
+}
+
+// Separated from BotAuth to prevent single-table credential + key exposure
+model BotWallet {
+  id                 String   @id @default(cuid())
+  walletAddress      String   @unique
+  encryptedWalletKey String
+  botAuthId          String   @unique
+  botAuth            BotAuth  @relation(fields: [botAuthId], references: [id])
+  createdAt          DateTime @default(now())
+}
+
+model DealLog {
+  id           String   @id @default(uuid())
+  txHash       String   @unique
+  regime       String   // "lifi" | "p2p"
+  chainId      Int
+  fromToken    String
+  toToken      String
+  fromAmount   String
+  toAmount     String?
+  botAddress   String
+  status       String   // "pending" | "completed" | "failed"
+  makerComment String?  // bot reasoning from maker
+  takerComment String?  // bot reasoning from taker
+  metadata     Json?
+  createdAt    DateTime @default(now())
+}
+
+model P2POrder {
+  id           String   @id @default(uuid())
+  onChainId    Int      @unique    // hook's orderId
+  maker        String              // bot wallet address
+  sellToken0   Boolean             // true = selling WETH, false = selling USDC
+  amountIn     String              // raw amount escrowed in hook
+  minAmountOut String              // minimum acceptable output
+  expiry       DateTime
+  status       String   @default("active") // active | filled | cancelled | expired
+  txHash       String?             // posting tx hash
+  matchTxHash  String?             // match/fill tx hash
+  poolKey      Json                // cached pool key for reference
+  createdAt    DateTime @default(now())
+
+  @@index([maker])
+  @@index([status])
+}
